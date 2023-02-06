@@ -12,16 +12,7 @@ export default function Home({ results }: InferGetServerSidePropsType<GetServerS
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie: IMovie) => (
-        <Link
-          key={movie.id}
-          href={{
-            pathname: `/movies/${movie.id}`,
-            query: {
-              title: movie.original_title,
-            },
-          }}
-          as={`/movies/${movie.id}`}
-        >
+        <Link key={movie.id} href={`/movies/${movie.original_title}/${movie.id}`}>
           <div className="movie">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
             <h4>{movie.original_title}</h4>
